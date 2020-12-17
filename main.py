@@ -8,7 +8,7 @@ import setup
 import os
 import json
 
-bot = commands.Bot(command_prefix=[setup.prefix()])
+bot = commands.Bot(command_prefix=[setup.prefix])
 
 
 @bot.event
