@@ -1,0 +1,7 @@
+discord.py
+asyncio
+discord
+re
+traceback
+sys
+os
