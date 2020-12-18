@@ -39,7 +39,7 @@ class Moderation(commands.Cog):
         await ctx.send(embed=modembed)
 
     @commands.command(no_pm=True)
-    @commands.has_any_role(setup.modrolenames())
+    @commands.has_any_role(setup.modrolenames)
     async def kick(self,ctx,member: discord.Member=None, *,reason=None):
         """ ᗣ Kick someone from the server """
         if not member:
@@ -58,7 +58,7 @@ class Moderation(commands.Cog):
 
             
     @commands.command(no_pm=True)
-    @commands.has_any_role(setup.modrolenames())
+    @commands.has_any_role(setup.modrolenames)
     async def ban(self,ctx,member: discord.Member,*,reason=None):
         """ ᗣ Ban someone from the server """
         if not member:
@@ -75,7 +75,7 @@ class Moderation(commands.Cog):
 					await self.mod_embed(ctx,member,success,"kick",reason)
 
     @commands.command(no_pm=True)
-    @commands.has_any_role(setup.modrolenames())
+    @commands.has_any_role(setup.modrolenames)
     async def unban(self, ctx, id=None):
         """ ᗣ Unban someone from the server """
         user = await self.bot.fetch_user(id)
@@ -96,7 +96,7 @@ class Moderation(commands.Cog):
             await ctx.send(embed = unbanembed)
 
     @commands.command(aliases=['del', 'p', 'prune'], bulk=True, no_pm=True)
-    @commands.has_any_role(setup.modrolenames())
+    @commands.has_any_role(setup.modrolenames)
     async def purge(self, ctx, limit: int):
         """ ᗣ Clean messages from chat """
         if limit is None:
@@ -114,7 +114,7 @@ class Moderation(commands.Cog):
             await ctx.send(f'Cannot delete `{limit}`, try with less than 100.',delete_after=23)
 
     @commands.command(no_pm=True)
-    @commands.has_any_role(setup.modrolenames())
+    @commands.has_any_role(setup.modrolenames)
     async def bans(self, ctx):
         """ ᗣ See a list of banned users """
         try:
@@ -137,7 +137,7 @@ class Moderation(commands.Cog):
         await ctx.send(embed=e)
 
     @commands.command(no_pm=True)
-    @commands.has_any_role(setup.modrolenames())
+    @commands.has_any_role(setup.modrolenames)
     async def slowmode(self,ctx, seconds: int):
         """ ᗣ Set the slowmode in the channel """
         await ctx.channel.edit(slowmode_delay=seconds)
@@ -148,7 +148,7 @@ class Moderation(commands.Cog):
         await ctx.send(embed = purge, delete_after=23)
 
     @commands.command(no_pm=True)
-    @commands.has_any_role(setup.modrolenames())
+    @commands.has_any_role(setup.modrolenames)
     async def mute(self, ctx, member:discord.Member, *, time:TimeConverter = None):
 		""" ᗣ Mutes someone in the server """
       if time is None:
@@ -177,7 +177,7 @@ class Moderation(commands.Cog):
           await asyncio.sleep(time)
           await member.remove_roles(role)
     @commands.command(no_pm=True)
-    @commands.has_any_role(setup.modrolenames())
+    @commands.has_any_role(setup.modrolenames)
     async def unmute(self, ctx, member: discord.Member):
 			""" ᗣ Unmutes someone in the server """
       role = discord.utils.get(ctx.guild.roles, name="Muted")
